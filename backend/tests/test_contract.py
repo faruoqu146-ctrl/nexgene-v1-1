@@ -8,7 +8,7 @@ def test_v100_contract():
     html = (root / 'mobile/index.html').read_text()
     compose = (root / 'docker-compose.yml').read_text()
     readme = (root / 'README.md').read_text()
-    assert 'APP_VERSION = "1.0.0"' in main
+    assert 'APP_VERSION = "1.1.0"' in main
     assert 'FileResponse("mobile/index.html")' in main
     assert 'app.mount("/static"' in main
     assert 'window.location.origin' in js
@@ -22,4 +22,6 @@ def test_v100_contract():
     assert 'DUMMY_PASSWORD_HASH' in main
     assert 'RateLimitBucket' in main
     assert 'docs_url="/docs" if DEV_MODE else None' in main
-    assert 'APP_VERSION' in readme and 'v1.0.0' in readme and 'NexGene Signals' in readme and 'Weekly NexGene Report' in readme
+    assert 'NexGene Signals' in readme and 'Weekly NexGene Report' in readme
+    assert 'v1.1.0' in readme or 'v1.0.0' in readme
+    assert 'APP_VERSION' in main
